@@ -30,7 +30,7 @@
 			<div class="md-layout-item">
 				<div class="table__container">
 					<div class="table__header">
-						<h3>My Address</h3>
+						<h3>My GradePoint</h3>
 					</div>
 
 					<div class="table__content">

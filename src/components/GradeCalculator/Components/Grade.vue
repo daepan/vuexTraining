@@ -4,6 +4,7 @@
 // 학점
 // 위 모양과 같은 표(4*2)로 출력할 것
 <template>
+<div>
     <md-table class="FirstCalcultables">
       <md-table-row>
         <md-table-head>1학기</md-table-head>
@@ -12,16 +13,38 @@
         <md-table-head>총합</md-table-head>
       </md-table-row>
       		<md-table-row>
-                  <md-table-cell>학점</md-table-cell>
-                  <md-table-cell>{{ firstSemester[index].name }}</md-table-cell>
-                  <md-table-cell>{{ firstSemester[index].name }}</md-table-cell>
-                  <md-table-cell>{{ firstSemester[index].name }}</md-table-cell>
+                <md-table-cell>학점</md-table-cell>
+                <md-table-cell>{{ FPointJ }}</md-table-cell>
+                <md-table-cell>{{ FPointG }}</md-table-cell>
+                <md-table-cell>{{ FPointG+FPointJ }}</md-table-cell>
             </md-table-row>
     </md-table>
+        <md-table class="SecondCalcultables">
+         <md-table-row>
+            <md-table-head>2학기</md-table-head>
+            <md-table-head>전공</md-table-head>
+            <md-table-head>교양</md-table-head>
+            <md-table-head>총합</md-table-head>
+            </md-table-row>
+      		<md-table-row>
+                <md-table-cell>학점</md-table-cell>
+                <md-table-cell>{{ SPointJ }}</md-table-cell>
+                <md-table-cell>{{ SPointG }}</md-table-cell>
+                <md-table-cell>{{ SPointG+SPointJ }}</md-table-cell>
+            </md-table-row>
+         </md-table>
+    
+    </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
-    name:'Gradecalcul'
+    name:'GradeCalcul',
+    computed:{
+        ...mapGetters(['FPointG','FPointJ','SPointG','SPointJ']
+            
+        )
+    }
 }
 </script>
 <style>

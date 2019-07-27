@@ -40,8 +40,7 @@ const state = {
         grade: 3,
         myGrade: "F", //computed나 method 활용해서 4.5로 변환시킬 것
       }
-    ],
-    selected:0
+    ]
   }
   
   const getters = {
@@ -50,9 +49,44 @@ const state = {
     },
     secondSemester : (state)=>{
       return state.secondSemester
-    }
-  
-      }
+    },
+    FPointG:(state)=>{
+        let count1 = 0;
+        for(let i=0; i < state.firstSemester.length; i++){
+            if(state.firstSemester[i].type==="교양"){
+                count1 += state.firstSemester[i].grade;
+            }
+            }
+            return count1;
+        },
+    FPointJ:(state)=>{
+        let count2 = 0;
+        for(let k=0; k< state.firstSemester.length; k++){
+            if(state.firstSemester[k].type==="전공"){
+                count2 += state.firstSemester[k].grade;
+            }
+        }
+            return count2;
+        },
+        SPointG:(state)=>{
+            let count1 = 0;
+            for(let i=0; i < state.secondSemester.length; i++){
+                if(state.secondSemester[i].type==="교양"){
+                    count1 += state.secondSemester[i].grade;
+                }
+                }
+                return count1;
+            },
+        SPointJ:(state)=>{
+            let count2 = 0;
+            for(let k=0; k< state.secondSemester.length; k++){
+                if(state.secondSemester[k].type==="전공"){
+                    count2 += state.secondSemester[k].grade;
+                }
+            }
+                return count2;
+            },
+        }
       
   
   
