@@ -4,9 +4,9 @@ import grade from './modules/grade'
 
 Vue.use(Vuex)
 
-export default new Vue.Store({
+export default new Vuex.Store({
     modules:{
         grade
-    }
-   
+    },
+
 })

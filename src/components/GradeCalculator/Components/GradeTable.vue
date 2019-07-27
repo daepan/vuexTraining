@@ -4,148 +4,100 @@
 //	인덱스 과목명 학점 타입 내학점
 //  ...
 // 위 모양과 같은 표(5*n)로 출력할 것
+
 <template>
-<div class="row__container">
-	
-			<div
-			:class="{'first-row': flag==='first', 'add-row': flag==='add'}"
-			class="row__content">
-			<div
-				class="row__content__index"
-				v-if="index === 0">
-				No.
-			</div>
-			<div
-				class="row__content__index"
-				v-else
-				:index="index+1">
-				{{ index }}
-			</div>
-				<div class="title__name">과목명</div>
-				<div
-				v-if="flag==='default' || flag==='first'"
-				class="row__content__name">
-				{{ fmyname }}
-			</div>
-				<div class="title__grade">학점</div>
-				<div
-				v-if="flag==='default' || flag==='first'"
-				class="row__content__name">
-				{{ fgrade }}
-			</div>
-				<div class="title__type">타입</div>
-				<div
-				v-if="flag==='default' || flag==='first'"
-				class="row__content__name">
-				{{ ftype }}
-			</div>
-				<div class="title__mygrade">내학점</div>
-				<div
-				v-if="flag==='default' || flag==='first'"
-				class="row__content__name">
-				{{ fmygradee }}
-			</div>
-				
-			</div>
-			
-</div>
-			
+  <div>
+    나의 1학기 성적
+
+	 <input type="checkbox"  v-model="check1" @click="calculSemester(firstSemester)">
+	 <label for="first">1학기</label>
+	<input type="checkbox"  v-model="check2" @click="calculSemester(secondSemester)">
+	<label for="second">2학기</label>
+
+	<md-table class="Firsttables">
+      <md-table-row>
+        <md-table-head md-numeric>Index</md-table-head>
+        <md-table-head>과목명</md-table-head>
+        <md-table-head>학점</md-table-head>
+        <md-table-head>타입</md-table-head>
+        <md-table-head>내 학점</md-table-head>
+      </md-table-row>
 		
-		
+		  <md-table-row
+		  	 v-for="(data,index) in firstSemester" :key="data.id"
+	  			class="title__index__content"
+				  v-show="check1===true">
+		  <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{ firstSemester[index].name }}</md-table-cell>
+        <md-table-cell>{{ firstSemester[index].grade }}</md-table-cell>
+        <md-table-cell>{{ firstSemester[index].type }}</md-table-cell>
+        <md-table-cell>{{ firstSemester[index].myGrade }}</md-table-cell>
+			</md-table-row>
+
+
+		</md-table>
+		나의 2학기 성적
+		<br>
+		<md-table class="Secondtables">
+			 <md-table-row>
+        		<md-table-head md-numeric>Index</md-table-head>
+        		<md-table-head>과목명</md-table-head>
+        		<md-table-head>학점</md-table-head>
+        		<md-table-head>타입</md-table-head>
+       			<md-table-head>내 학점</md-table-head>
+      </md-table-row>
+
+	    <md-table-row
+		  	 v-for="(data,index) in secondSemester" :key="data.id"
+	  			class="title__index__content"
+				  v-show="check2===true">
+		  	<md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        		<md-table-cell>{{ secondSemester[index].name }}</md-table-cell>
+        		<md-table-cell>{{ secondSemester[index].grade }}</md-table-cell>
+        		<md-table-cell>{{ secondSemester[index].type }}</md-table-cell>
+       			<md-table-cell>{{ secondSemester[index].myGrade }}</md-table-cell>
+		 	</md-table-row>
+		</md-table>
+
 	
 
 
+  </div>
+	
+  
 
     
+
+
 </template>
+
 <script>
-import {mapGetters, mapState} from 'vuex'
-
-export default {
-	 props: {
-      index: {
-        default: 0,
-				type: Number
-			},
-    
-      flag: {
-        default: "default",
-				type: String
-			}
+  import {mapGetters, mapMutations} from 'vuex'
+  export default {
+	  name: "GradeTable",
+	    props: {
+			 check1: {
+                  default: false
+			  },
+			   check2: {
+                  default: false
+              }
+     
+     
     },
- 
-	computed:{
-		...mapGetters(['fmygradeCount', 'fmyname','ftype','fgrade','fmygrade'])
-	}
-   
-
-}
+      computed: {
+          ...mapGetters(['firstSemester', 'secondSemester'])
+      },
+     
+      methods: {
+          ...mapMutations(['setMyGrade']),
+          calculSemester : function(payload){
+              this.setMyGrade(payload)
+          }
+      }
+  }
 </script>
+
 <style>
-	.row__content {
-		width: auto;
-		border: 1px #bebebe solid;
-		margin: 2px;
-		height: 40px;
-		line-height: 40px;
-		float: center;
-		text-align: center;
-		background: white;
-	}
 
-.row__content:hover {
-		background: #bebebe;
-		font-weight: 700;
-	}
-.title{
-	justify-content: space-between;
-}
-.title__index{
-	float: left;
-		width: 20%;
-		border-right: 1px #bebebe solid;
-}
-.title__name{
-		float: left;
-		width: 20%;
-		border-right: 1px #bebebe solid;
-}
-.title__type{
-		float: left;
-		width: 20%;
-		border-right: 1px #bebebe solid;
-}
-.title__grade{
-		float: left;
-		width: 20%;
-		border-right: 1px #bebebe solid;
-
-}
-.title__mygrade{
-		float: left;
-		width: 20%;
-		border-right: 1px #bebebe solid;
-
-}
-	.first-row {
-		background: #363636;
-		color: white;
-		font-weight: 700;
-		text-align: center;
-	}
-
-	.first-row:hover {
-		background: #363636;
-	}
-
-	.add-row {
-		border: 1px solid #00bb00;
-		margin-bottom: 1px;
-	}
-
-	.add-row:hover {
-		background: white;
-		font-weight: 400;
-	}
-	
 </style>

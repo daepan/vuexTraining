@@ -8,7 +8,7 @@
 			<div class="md-layout-item">
 				<div class="table__container">
 					<div class="table__header">
-						<h3>My Address</h3>
+						<h3>My Grade</h3>
 					</div>
 
 					<div class="table__content">
@@ -35,7 +35,7 @@
 
 					<div class="table__content">
 						
-
+            <GradeCalcul></GradeCalcul>
 						
 
 						
@@ -52,13 +52,14 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
 import GradeTable from '@/components/GradeCalculator/Components/GradeTable'
+import GradeCalcul from '@/components/GradeCalculator/Components/Grade'
 
 export default {
   name:'GradeCalculator',
   components:{
-    'GradeTable':GradeTable
+    'GradeTable':GradeTable,
+    'GradeCalcul': GradeCalcul
   },
  computed:{
    
