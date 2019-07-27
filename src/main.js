@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-import Vuex from 'Vuex'
+import Vuex from 'vuex'
+import Store from './store'
 
 
 Vue.use(VueMaterial);
@@ -16,6 +17,7 @@ new Vue({
   el: '#app',
   router,
   Vuex, 
+  Store,
   components: { App },
   template: '<App/>'
 })

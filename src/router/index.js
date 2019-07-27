@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Main from '@/views/Main'
 import Address from '@/views/Address'
 import Calendar from '@/views/Calendar'
+import GradeCalculator from '@/views/GradeCalculator'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/calendar',
       name: 'Calendar',
       component: Calendar
+    },
+    {
+      path:'/GradeCalculator',
+      name:'GradeCalculator',
+      component: GradeCalculator
     }
   ]
 })

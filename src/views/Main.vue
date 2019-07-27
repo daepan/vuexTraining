@@ -5,7 +5,7 @@
 			<div
 				class="md-layout-item"
 				v-for="data in mainData"
-				:key="data">
+				:key="data.id">
 				<card
 					:title="data.title"
 					:desc="data.desc"
@@ -44,10 +44,9 @@
           },
           {
             title: "학점계산기",
-						//TODO: routing부터 다추가할 것
-            link: "/",
+            link: "/GradeCalculator",
             imgUrl: "http://www.w3.org/Graphics/PNG/text2.png",
-						desc: "//TODO: 를 검색해봐"
+			desc: "학점을 계산해드립니다."
           }
 				]
       }
