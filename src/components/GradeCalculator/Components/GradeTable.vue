@@ -9,10 +9,9 @@
   <div>
     나의 1학기 성적
 
-	 <input type="checkbox"  v-model="check1" @click="calculSemester(firstSemester)">
+	 <input type="checkbox"  v-model="check1" @click="CalculSemester(firstSemester)">
 	 <label for="first">1학기</label>
-	<input type="checkbox"  v-model="check2" @click="calculSemester(secondSemester)">
-	<label for="second">2학기</label>
+	
 
 	<md-table class="Firsttables">
       <md-table-row>
@@ -38,6 +37,8 @@
 			</div>
 		</md-table>
 			나의 2학기 성적
+			<input type="checkbox"  v-model="check2" @click="CalculSemester(secondSemester)">
+	<label for="second">2학기</label>
 			<br>
 			<md-table class="Secondtables">
 			 <md-table-row>
@@ -83,7 +84,7 @@
 		<div class="add-mygrade">
 			<select type="text" v-model="Firstmygrade">
 				<option disabled value="">내학점</option>
-				<option :value="{ text: 'A+' }">A+</option>
+				<option :value="{ number: 4.5, text: 'A+' }">A+</option>
 			</select>
 		</div>
 		
@@ -91,7 +92,7 @@
 
 		</div>
 			<div>
-			<div class="first-grade">2학기 </div>
+			<div class="second-grade">2학기 </div>
 		<div class="add-name"> 
 			<select type="text" v-model="Secondname">
 				<option disabled value="">과목</option>
@@ -114,7 +115,7 @@
 		<div class="add-mygrade">
 			<select type="text" v-model="Secondmygrade">
 				<option disabled value="">내학점</option>
-				<option :value="{ text: 'A+' }">A+</option>
+				<option :value="{ number: 4.5 ,text: 'A+' }">A+</option>
 			</select>
 		</div>
 		
@@ -165,16 +166,16 @@
       },
      
       methods: {
-          ...mapMutations(['setMyGrade', 'addFGradeline','addSGradeline']),
-          calculSemester : function(payload){
-              this.setMyGrade(payload)
+          ...mapMutations(['setSemester', 'addFGradeline','addSGradeline']),
+          CalculSemester : function(payload){
+              this.setSemester(payload)
 		  },
 		addFirstGrade: function(){
 			let FGradeInfo ={
 				name: this.Firstname.text,
 				grade: this.Firstgrade.number,
 				type: this.Firsttype.text,
-				mygrade: this.Firstmygrade.text
+				myGrade: this.Firstmygrade.number
 			}
 			this.addFGradeline(FGradeInfo)
 			this.ClearFForm()
@@ -184,7 +185,7 @@
 				name: this.Secondname.text,
 				grade: this.Secondgrade.number,
 				type: this.Secondtype.text,
-				mygrade: this.Secondmygrade.text
+				myGrade: this.Secondmygrade.number
 			}
 			this.addSGradeline(SGradeInfo)
 			this.ClearSForm()

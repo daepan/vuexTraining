@@ -1,5 +1,3 @@
-
-    
 const state = {
     firstSemester: [
       {
@@ -91,7 +89,7 @@ const state = {
   
   
   const mutations = {
-    setMyGrade : (state, payload)=>{
+    setSemester : (state, payload)=>{
         for(let i = 0; i < payload.length; i++){
           if(payload[i].myGrade === "A+"){ 
             payload[i].myGrade = "4.5" 
