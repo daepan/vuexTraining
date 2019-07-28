@@ -122,6 +122,9 @@ const state = {
                                               }
         }
  
+          },
+          addGradeline: (state, GradeInfo)=>{
+              state.firstSemester.push(GradeInfo)
           }
         }
   

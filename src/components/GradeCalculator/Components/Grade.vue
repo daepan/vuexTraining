@@ -41,7 +41,7 @@ import { mapGetters } from 'vuex';
 export default {
     name:'GradeCalcul',
     computed:{
-        ...mapGetters(['FPointG','FPointJ','SPointG','SPointJ']
+        ...mapGetters(['firstSemester','secondSemester','FPointG','FPointJ','SPointG','SPointJ']
             
         )
     }
