@@ -60,34 +60,67 @@
 		 	</md-table-row>
 		</md-table>
 		<div>
+			<div class="first-grade">1학기 </div>
 		<div class="add-name"> 
-			<select type="text" v-model="name">
+			<select type="text" v-model="Firstname">
 				<option disabled value="">과목</option>
 				<option :value="{ text: 'C언어'}">C언어</option>
 			</select>
 		</div>
 		<div class="add-grade">
-			<select type="text" v-model="grade">
+			<select type="text" v-model="Firstgrade">
 				<option disabled value="">학점</option>
 				<option :value="{ number: 3 }">3</option>
 			</select>
 		</div>
 		<div class="add-type">
-			<select type="text" v-model="type">
+			<select type="text" v-model="Firsttype">
 				<option disabled value="">타입</option>
 				<option :value="{ text:'전공'}">전공</option>
 				<option :value="{ text: '교양'}">교양</option>
 			</select>
 		</div>
 		<div class="add-mygrade">
-			<select type="text" v-model="mygrade">
+			<select type="text" v-model="Firstmygrade">
 				<option disabled value="">내학점</option>
 				<option :value="{ text: 'A+' }">A+</option>
 			</select>
 		</div>
 		
-		<button @click="addGrade">ADD</button>
+		<button @click="addFirstGrade">ADD</button>
+
 		</div>
+			<div>
+			<div class="first-grade">2학기 </div>
+		<div class="add-name"> 
+			<select type="text" v-model="Secondname">
+				<option disabled value="">과목</option>
+				<option :value="{ text: 'C언어'}">C언어</option>
+			</select>
+		</div>
+		<div class="add-grade">
+			<select type="text" v-model="Secondgrade">
+				<option disabled value="">학점</option>
+				<option :value="{ number: 3 }">3</option>
+			</select>
+		</div>
+		<div class="add-type">
+			<select type="text" v-model="Secondtype">
+				<option disabled value="">타입</option>
+				<option :value="{ text:'전공'}">전공</option>
+				<option :value="{ text: '교양'}">교양</option>
+			</select>
+		</div>
+		<div class="add-mygrade">
+			<select type="text" v-model="Secondmygrade">
+				<option disabled value="">내학점</option>
+				<option :value="{ text: 'A+' }">A+</option>
+			</select>
+		</div>
+		
+		<button @click="addSecondGrade">ADD</button>
+		</div>
+	
 	
 
 
@@ -116,10 +149,14 @@
 	},
 	data: function(){
 		return {
-			name:"",
-			type: "",
-			grade: "",
-			mygrade: ""
+			Firstname:"",
+			Firsttype: "",
+			Firstgrade: "",
+			Firstmygrade: "",
+			Secondname:"",
+			Secondtype: "",
+			Secondgrade: "",
+			Secondmygrade: ""
 		}
 
 	},
@@ -128,26 +165,42 @@
       },
      
       methods: {
-          ...mapMutations(['setMyGrade', 'addGradeline']),
+          ...mapMutations(['setMyGrade', 'addFGradeline','addSGradeline']),
           calculSemester : function(payload){
               this.setMyGrade(payload)
 		  },
-		addGrade: function(){
-			let GradeInfo ={
-				name: this.name.text,
-				grade: this.grade.number,
-				type: this.type.text,
-				mygrade: this.mygrade.text
+		addFirstGrade: function(){
+			let FGradeInfo ={
+				name: this.Firstname.text,
+				grade: this.Firstgrade.number,
+				type: this.Firsttype.text,
+				mygrade: this.Firstmygrade.text
 			}
-			this.addGradeline(GradeInfo)
-			this.ClearForm()
+			this.addFGradeline(FGradeInfo)
+			this.ClearFForm()
 		},
-		ClearForm: function(){
-			this.name=null
-			this.grade=null
-			this.type=null
-			this.mygrade=null
-		}	
+		addSecondGrade: function(){
+			let SGradeInfo ={
+				name: this.Secondname.text,
+				grade: this.Secondgrade.number,
+				type: this.Secondtype.text,
+				mygrade: this.Secondmygrade.text
+			}
+			this.addSGradeline(SGradeInfo)
+			this.ClearSForm()
+		},
+		ClearSForm: function(){
+			this.Secondname=null
+			this.Secondgrade=null
+			this.Secondtype=null
+			this.Secondmygrade=null
+		},
+			ClearFForm: function(){
+			this.Firstname=null
+			this.Firstgrade=null
+			this.Firsttype=null
+			this.Firstmygrade=null
+		}		
 		  
       }
   }

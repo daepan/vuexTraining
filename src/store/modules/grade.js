@@ -123,15 +123,18 @@ const state = {
         }
  
           },
-          addGradeline: (state, GradeInfo)=>{
-              state.firstSemester.push(GradeInfo)
-          }
+          addFGradeline: (state, FGradeInfo)=>{
+              state.firstSemester.push(FGradeInfo)
+          },
+          addSGradeline: (state, SGradeInfo)=>{
+            state.secondSemester.push(SGradeInfo)
+        
         }
+
+    }
+
   
   
-  const actions = {
-  
-  }
   
   export default {
     state,
