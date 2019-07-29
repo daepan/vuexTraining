@@ -14,9 +14,9 @@
       </md-table-row>
       		<md-table-row>
                 <md-table-cell>학점</md-table-cell>
-                <md-table-cell>{{ FPointJ }}</md-table-cell>
-                <md-table-cell>{{ FPointG }}</md-table-cell>
-                <md-table-cell>{{ FPointG+FPointJ }}</md-table-cell>
+                <md-table-cell>{{ firstMain }}</md-table-cell>
+                <md-table-cell>{{ firstSub }}</md-table-cell>
+                <md-table-cell>{{ firstMain+firstSub }}</md-table-cell>
             </md-table-row>
     </md-table>
         <md-table class="SecondCalcultables">
@@ -28,9 +28,9 @@
             </md-table-row>
       		<md-table-row>
                 <md-table-cell>학점</md-table-cell>
-                <md-table-cell>{{ SPointJ }}</md-table-cell>
-                <md-table-cell>{{ SPointG }}</md-table-cell>
-                <md-table-cell>{{ SPointG+SPointJ }}</md-table-cell>
+                <md-table-cell>{{ secondMain }}</md-table-cell>
+                <md-table-cell>{{ secondSub }}</md-table-cell>
+                <md-table-cell>{{ secondMain+secondSub }}</md-table-cell>
             </md-table-row>
          </md-table>
     
@@ -41,7 +41,7 @@ import { mapGetters } from 'vuex';
 export default {
     name:'GradeCalcul',
     computed:{
-        ...mapGetters(['firstSemester','secondSemester','FPointG','FPointJ','SPointG','SPointJ']
+        ...mapGetters(['firstSemester','secondSemester','firstSub','firstMain','secondMain','secondSub']
             
         )
     }

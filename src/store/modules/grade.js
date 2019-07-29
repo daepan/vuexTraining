@@ -48,7 +48,7 @@ const state = {
     secondSemester : (state)=>{
       return state.secondSemester
     },
-    FPointG:(state)=>{
+      firstSub:(state)=>{
         let count1 = 0;
         for(let i=0; i < state.firstSemester.length; i++){
             if(state.firstSemester[i].type==="교양"){
@@ -57,7 +57,7 @@ const state = {
             }
             return count1;
         },
-    FPointJ:(state)=>{
+      firstMain:(state)=>{
         let count2 = 0;
         for(let k=0; k< state.firstSemester.length; k++){
             if(state.firstSemester[k].type==="전공"){
@@ -66,7 +66,7 @@ const state = {
         }
             return count2;
         },
-        SPointG:(state)=>{
+        secondSub:(state)=>{
             let count1 = 0;
             for(let i=0; i < state.secondSemester.length; i++){
                 if(state.secondSemester[i].type==="교양"){
@@ -75,7 +75,7 @@ const state = {
                 }
                 return count1;
             },
-        SPointJ:(state)=>{
+        secondMain:(state)=>{
             let count2 = 0;
             for(let k=0; k< state.secondSemester.length; k++){
                 if(state.secondSemester[k].type==="전공"){
@@ -121,11 +121,11 @@ const state = {
         }
  
           },
-          addFGradeline: (state, FGradeInfo)=>{
-              state.firstSemester.push(FGradeInfo)
+          addFirstline: (state, FirstInfo)=>{
+              state.firstSemester.push(FirstInfo)
           },
-          addSGradeline: (state, SGradeInfo)=>{
-            state.secondSemester.push(SGradeInfo)
+          addSecondline: (state, SecondInfo)=>{
+            state.secondSemester.push(SecondInfo)
         
         }
 

@@ -24,7 +24,7 @@
 		
 		  <md-table-row
 		  	 v-for="(data,index) in firstSemester" :key="data.id"
-	  			class="title__index__content"
+	  			class="title__content"
 				  v-show="check1===true">
 		  <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         	<md-table-cell>{{ firstSemester[index].name }}</md-table-cell>
@@ -32,9 +32,7 @@
         	<md-table-cell>{{ firstSemester[index].type }}</md-table-cell>
         	<md-table-cell>{{ firstSemester[index].myGrade }}</md-table-cell>
 			</md-table-row>
-			<div class="add-row">
-				<div> </div>
-			</div>
+		
 		</md-table>
 			나의 2학기 성적
 			<input type="checkbox"  v-model="check2" @click="CalculSemester(secondSemester)">
@@ -51,7 +49,7 @@
 
 	    <md-table-row
 		  	 v-for="(data,index) in secondSemester" :key="data.id"
-	  			class="title__index__content"
+	  			class="title__content"
 				  v-show="check2===true">
 		  	<md-table-cell md-numeric>{{index+1}}</md-table-cell>
         		<md-table-cell>{{ secondSemester[index].name }}</md-table-cell>
@@ -71,7 +69,9 @@
 		<div class="add-grade">
 			<select type="text" v-model="Firstgrade">
 				<option disabled value="">학점</option>
+				<option :value="{ number: 2 }">2</option>
 				<option :value="{ number: 3 }">3</option>
+				<option :value="{ number: 4 }">4</option>
 			</select>
 		</div>
 		<div class="add-type">
@@ -85,6 +85,14 @@
 			<select type="text" v-model="Firstmygrade">
 				<option disabled value="">내학점</option>
 				<option :value="{ number: 4.5, text: 'A+' }">A+</option>
+				<option :value="{ number: 4, text: 'A0' }">A0</option>
+				<option :value="{ number: 3.5, text: 'B+' }">B+</option>
+				<option :value="{ number: 3, text: 'B0' }">B0</option>
+				<option :value="{ number: 2.5, text: 'C+' }">C+</option>
+				<option :value="{ number: 2, text: 'C0' }">C0</option>
+				<option :value="{ number: 1.5, text: 'D+' }">D+</option>
+				<option :value="{ number: 1, text: 'D0' }">D0</option>
+				<option :value="{ number: 0, text: 'F' }">F</option>
 			</select>
 		</div>
 		
@@ -102,7 +110,9 @@
 		<div class="add-grade">
 			<select type="text" v-model="Secondgrade">
 				<option disabled value="">학점</option>
+				<option :value="{ number: 2 }">2</option>
 				<option :value="{ number: 3 }">3</option>
+				<option :value="{ number: 4 }">4</option>
 			</select>
 		</div>
 		<div class="add-type">
@@ -115,7 +125,16 @@
 		<div class="add-mygrade">
 			<select type="text" v-model="Secondmygrade">
 				<option disabled value="">내학점</option>
-				<option :value="{ number: 4.5 ,text: 'A+' }">A+</option>
+			<option disabled value="">내학점</option>
+				<option :value="{ number: 4.5, text: 'A+' }">A+</option>
+				<option :value="{ number: 4, text: 'A0' }">A0</option>
+				<option :value="{ number: 3.5, text: 'B+' }">B+</option>
+				<option :value="{ number: 3, text: 'B0' }">B0</option>
+				<option :value="{ number: 2.5, text: 'C+' }">C+</option>
+				<option :value="{ number: 2, text: 'C0' }">C0</option>
+				<option :value="{ number: 1.5, text: 'D+' }">D+</option>
+				<option :value="{ number: 1, text: 'D0' }">D0</option>
+				<option :value="{ number: 0, text: 'F' }">F</option>
 			</select>
 		</div>
 		
@@ -166,7 +185,7 @@
       },
      
       methods: {
-          ...mapMutations(['setSemester', 'addFGradeline','addSGradeline']),
+          ...mapMutations(['setSemester', 'addFirstline','addSecondline']),
           CalculSemester : function(payload){
               this.setSemester(payload)
 		  },
